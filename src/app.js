@@ -4,7 +4,7 @@ let linkList = document.getElementById('link-list');
 submit.addEventListener('click', function() {
 	let name = document.getElementById('link-title');
 	let url = document.getElementById('link-url');
-	if (name.length !== 0 && url.length !== 0) {
+	if (name.value.length !== 0 && url.value.length !== 0) {
 		injectNew(name.value, url.value);
 		name.value = '';
 		url.value = '';
