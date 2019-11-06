@@ -1,15 +1,25 @@
+// GLOBAL
 let submit = document.getElementById('submit-new');
 let linkList = document.getElementById('link-list');
 let name = document.getElementById('link-title');
 let url = document.getElementById('link-url');
 
+// EVENTS TO LISTEN TO ENTER KEY
 name.addEventListener('keyup', function(event) {
-	if (event.keycode === 13) {
+	if (event.keyCode === 13) {
 		event.preventDefault();
 		submit.click();
 	}
 });
 
+url.addEventListener('keyup', function(event) {
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		submit.click();
+	}
+});
+
+// CREATION CODE
 submit.addEventListener('click', function() {
 	if (name.value.length !== 0 && url.value.length !== 0) {
 		injectNew(name.value, url.value);
@@ -20,11 +30,13 @@ submit.addEventListener('click', function() {
 	}
 });
 
+// PLACE NEW BOOKMARK IN THE LIST
 function injectNew(name, url) {
 	let newUrl = checkURL(url);
 	linkList.innerHTML += `<li class="list-group-item">${name} <a class="btn btn-primary" href="${newUrl}" target="_blank">Visit</a></li>`;
 }
 
+// Validate the URL
 function checkURL(url) {
 	if (url.includes('http://')) {
 		return;
